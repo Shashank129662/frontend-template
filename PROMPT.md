@@ -1,41 +1,42 @@
-# Reusable Codex prompts
+# Frontend task prompts
 
-Attach or link the reference and use one of these prompts from the repository root.
+Replace the bracketed inputs in one prompt below. [AGENTS.md](AGENTS.md) owns repository policy and skill routing; prompts supply task-specific scope only. Omit inputs that do not apply.
 
-## 1. Screenshot / image to code
+## Implement a reference
 
 ```text
-Implement the supplied screenshot/image reference in this repository. The application code lives under `src/`.
-
-First read AGENTS.md and discover only the relevant skills under .agents/skills/ (at minimum screenshot-to-code, asset-management, visual-accuracy, responsive-design, component-architecture, nextjs-production, and visual-qa). Inspect the existing architecture and recursively inspect public/assets before editing.
-
-Analyze the reference completely: its sections, typography, colors, spacing, dimensions, backgrounds, image placement, containers, alignment, layers, and responsive behavior. Map supplied local assets semantically to visual reference elements before creating any visual element. All supplied raster visual assets must be WEBP; convert eligible non-WEBP source assets before use. Do not generate, hotlink, invent, or substitute fake visual assets. Report essential missing assets while preserving their intended layout footprint.
-
-Implement the result with Next.js App Router, TypeScript, Tailwind, meaningful components, next/image where appropriate, and next/link for internal links. The reference is the visual source of truth, not the starter page.
-
-Run pnpm lint, pnpm typecheck, and pnpm build. Start the app, run the visual QA script, compare rendered screenshots to the supplied reference at its exact viewport and representative responsive widths, then fix meaningful differences. Do not stop at conceptual similarity.
+Follow AGENTS.md. Implement [screenshot attachment or Figma URL and frame ID] at [route].
+Reference viewport: [width × height]. Other supplied breakpoints: [references].
+Assets and fonts: [paths within public/assets].
+Interactions and destinations: [behavior and URLs].
+Content or data source: [provided copy/API/static data].
+Acceptance criteria: [specific visual and behavioral outcomes].
 ```
 
-## 2. Figma to code
+## Correct an existing UI
 
 ```text
-Implement the supplied Figma page/frame in this repository. The application code lives under `src/`.
-
-Read AGENTS.md first, then load figma-to-code, asset-management, visual-accuracy, responsive-design, component-architecture, nextjs-production, and visual-qa. Use available Figma tooling to inspect the actual frame before coding: hierarchy, auto-layout, components, variants, styles, variables, typography, spacing, colors, effects, images, and responsive constraints. If access is unavailable, state that clearly and use supplied evidence only.
-
-Inspect public/assets before creating visuals. Map local WEBP assets to Figma elements; do not recreate supplied artwork, use remote placeholders, or invent images. Use Next.js + TypeScript + Tailwind with sound component boundaries. Preserve responsive intent rather than scaling down desktop positions.
-
-Validate pnpm lint, pnpm typecheck, and pnpm build. Render the implementation at the Figma frame dimensions, visually compare it, fix significant differences, then validate mobile, tablet, desktop, and large desktop.
+Follow AGENTS.md. Compare [route] with [reference] and fix [observed mismatches].
+Reproduction: [viewport, state, and steps].
+Preserve: [working behavior or areas outside scope].
+Acceptance criteria: [expected appearance and behavior].
 ```
 
-## 3. Improve an existing implementation
+## Reuse components
 
 ```text
-Compare the existing implementation with the supplied design reference and improve only the meaningful visual mismatches.
+Follow AGENTS.md. Refactor [components/routes] to share [repeated UI or behavior].
+Existing variants and callers: [examples].
+Preserve appearance, semantics, public props, and interactions unless specified.
+Acceptance criteria: [which consumers should use the shared implementation].
+```
 
-Read AGENTS.md, inspect the relevant skills, existing architecture, target route, and public/assets before editing. Use the reference as truth. Check spacing, typography, section heights, container widths, image size/crop/position, backgrounds, border radii, shadows, alignment, and responsive behavior. Map existing supplied assets before changing visual elements.
+## Test the UI
 
-Preserve working architecture and interactions. Do not rewrite correct areas, add arbitrary dependencies, use fallback hacks, invent visual assets, or replace supplied artwork. Use Next.js, TypeScript, and Tailwind conventions.
-
-Run pnpm lint, pnpm typecheck, pnpm build, and visual QA against a running app. Compare before/after screenshots at reference dimensions and responsive widths, then resolve high-impact differences first.
+```text
+Follow AGENTS.md. Validate [routes] against [reference, if available].
+Critical user journeys: [steps and expected outcomes].
+States: [empty/loading/error/success and relevant roles].
+Viewports/browsers: [required coverage].
+Add regression tests for [behavior], fix failures within [scope], and report evidence and remaining gaps.
 ```

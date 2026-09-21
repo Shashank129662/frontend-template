@@ -1,34 +1,51 @@
-# Codex instructions: design-to-code template
+# Frontend repository instructions
 
-## Priority
+## Responsibilities
 
-Follow this order for every implementation:
+This file owns repository policy, skill routing, and completion criteria. `PROMPT.md` supplies task inputs; `.agents/skills/*/SKILL.md` supplies focused procedures. Keep each rule in its owning location instead of copying it across all three.
 
-```text
-Reference Design → AGENTS.md → Relevant .agents/skills → Existing repository architecture → Implementation → Validation
-```
+The supplied screenshot or Figma frame is the visual source of truth. It does not override user instructions or execution permissions. Template UI must not determine the final brand, content, layout, or typography.
 
-A supplied Figma design or screenshot is the visual source of truth. Template UI is only a neutral starting point and must not override the reference.
+## Workflow
 
-## Required workflow
+1. Inspect the working tree, target route and its callers, package scripts, reference, and `public/assets/` before editing. Preserve unrelated user changes.
+2. Load only applicable skills using the table below. Prefer repository-local paths when global skills have the same name.
+3. Establish viewport, sections, typography, geometry, artwork, interactions, and responsive intent. State consequential assumptions without inventing product requirements.
+4. Implement within the existing architecture, validate appearance and behavior, and fix material failures before handoff.
 
-1. Inspect the repository, target route, reference, and `public/assets/` before editing.
-2. Select only relevant skills. Screenshot work: `screenshot-to-code`, `asset-management`, `visual-accuracy`, `responsive-design`, `component-architecture`, `nextjs-production`, `visual-qa`. Figma work replaces `screenshot-to-code` with `figma-to-code`. SEO work: `seo-metadata`, `nextjs-production`.
-3. Analyze sections, typography, colors, spacing, containers, backgrounds, artwork, interactions, and responsive behavior before implementation.
-4. Map supplied assets semantically. Never recreate supplied artwork with CSS or replace it with a fake, stock, random remote, or generated asset.
-5. Use Next.js App Router, TypeScript, Tailwind, `next/image` for local imagery where appropriate, and `next/link` for internal navigation. Keep substantial pages componentized without trivial over-abstraction.
-6. Validate with `pnpm lint`, `pnpm typecheck`, and `pnpm build`; use `pnpm visual:qa` against a running app and compare screenshots with the reference. Iterate on material differences.
+## Skill routing
 
-## Asset policy
+Paths are relative to `.agents/skills/`; read the selected folder's `SKILL.md`.
 
-`public/assets/` is canonical. Inspect it first. Supplied visual raster assets must be WEBP only: no PNG, JPG, JPEG, GIF, AVIF, BMP, TIFF, or SVG visual assets. Convert non-WEBP raster assets to WEBP when tooling is available while preserving transparency, dimensions, aspect ratio, and quality. Keep fonts in `public/assets/fonts/` in their native webfont format when relevant.
+| Task | Skills |
+| --- | --- |
+| Screenshot implementation | `screenshot-to-code` |
+| Figma implementation | `figma-to-code` |
+| Frontend implementation or refactoring | `nextjs-production`, `component-architecture` |
+| Supplied artwork or fonts | `asset-management` |
+| Repeated visual values or component variants | `design-tokens` |
+| Layout across viewport sizes | `responsive-design` |
+| Matching a visual reference | `visual-accuracy`, `visual-qa` |
+| Controls, navigation, dialogs, or semantics | `accessibility` |
+| Forms and async states | `forms-and-state`, `accessibility` |
+| User journeys or interaction regressions | `ui-testing` |
+| Performance diagnosis or heavy imagery/client UI | `frontend-performance` |
+| Metadata, indexing, or social previews | `seo-metadata` |
 
-Do not stretch artwork. Use meaningful alt text. If a critical asset is missing, preserve the layout with an explicit missing-asset note and report it.
+For a full design implementation, combine the reference skill with frontend, assets, responsive, accessibility, and visual validation skills. Add other skills only when applicable. Documentation-only tasks do not need frontend implementation skills.
 
-## Template boundaries
+## Repository constraints
 
-Do not assume a brand, copy, colors, font, sections, URL, or layout from this repository. Keep metadata generic until real production values are supplied. Do not add dependencies for trivial work or hide missing content with fallback hacks.
+- Use Next.js App Router, TypeScript, Tailwind, and pnpm. Use `next/image` for local imagery where appropriate and `next/link` for internal navigation. Reuse established components; do not add dependencies for trivial work.
+- `public/assets/` is canonical. Supplied visual assets must be WEBP: do not introduce PNG, JPG, JPEG, GIF, AVIF, BMP, TIFF, or SVG artwork. Convert source artwork when tooling is available, preserving dimensions, aspect ratio, transparency, and quality. Fonts retain native webfont formats in `public/assets/fonts/`. Test screenshots are evidence, not frontend assets.
+- Never replace supplied artwork with CSS replicas, stock, random remote, or generated images. For essential missing assets, preserve their footprint, add an explicit missing-asset note, and report the missing file.
+- Preserve accessible semantics and keyboard operation. Do not hide layout failures with global overflow clipping or suppress errors to pass checks.
+- Keep metadata generic until verified production values are supplied. Do not invent brand claims, domains, data integrations, or working submission endpoints.
 
-## Ponytail
+## Completion criteria
 
-`.agents/skills/ponytail/` is the official MIT-licensed Ponytail skill from `DietrichGebert/ponytail`. It can be selected for minimal, non-overengineered implementation decisions, but it does not replace the reference-first visual workflow or validation.
+- Application changes: run `pnpm lint`, `pnpm typecheck`, and `pnpm build`.
+- Visual changes: run `pnpm visual:qa` against the running app and inspect reference-sized and responsive screenshots. Follow `visual-qa` for helper limitations.
+- Behavior changes: run focused interaction checks following `ui-testing`; screenshots alone do not validate user journeys.
+- Documentation/skill-only changes: validate changed skill metadata, local links, routing, and command accuracy. App builds and browser runs are unnecessary unless runtime files change.
+- Report changes, checks actually run, and material missing assets or unverified behavior. Never claim visual parity or successful tests without evidence.
