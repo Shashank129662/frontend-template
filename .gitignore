@@ -1,0 +1,10 @@
+node_modules/
+.next/
+*.tsbuildinfo
+playwright-report/
+test-results/
+artifacts/screenshots/
+artifacts/*-results.json
+.env*.local
+# Next.js build output
+.next/
