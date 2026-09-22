@@ -1,13 +1,101 @@
----
-name: visual-accuracy
-description: Drive high-fidelity visual matching from Figma or screenshots.
----
-# Visual accuracy
+# Visual Accuracy
 
-Compare the full composition first: container geometry, section heights, major artwork and typography. Then correct spacing, colors/backgrounds, borders, radii, shadows, and details. Match line breaks, image crop and placement; do not stretch source art. Treat the visual reference—not template defaults—as truth.
+Match the implementation as closely as possible to the supplied Figma design, screenshot, mockup, or reference image.
 
-## Comparison procedure
+Treat the reference—not template defaults—as the visual source of truth.
 
-Compare the same route state and viewport with fonts and images loaded. Track discrepancies by element, observed difference, and likely cause. Fix container geometry before local spacing; fix font family/weight/measure before forcing line breaks. Check overlays or side-by-side crops when useful.
+## Comparison priority
 
-Avoid offset patches that align one viewport but break the layout elsewhere. Recheck affected responsive views after shared changes. Do not describe screenshot capture as automatic pixel-difference testing; record what was actually inspected and any remaining mismatch.
+Fix differences in this order:
+
+1. Page and container geometry
+2. Section height and width
+3. Major artwork and image placement
+4. Typography and line wrapping
+5. Spacing and alignment
+6. Colors and backgrounds
+7. Borders, radii, and shadows
+8. Small decorative details
+
+Fix structural differences before applying small spacing adjustments.
+
+## Typography
+
+Match:
+
+* font family
+* font size
+* font weight
+* line height
+* letter spacing
+* text width
+* alignment
+* line wrapping
+
+Fix typography and container width before manually forcing line breaks.
+
+## Images and artwork
+
+Match the reference image's:
+
+* size
+* position
+* aspect ratio
+* crop
+* alignment
+
+Never stretch or distort source artwork.
+
+Use `object-fit`, positioning, and container sizing appropriately.
+
+## Visual comparison
+
+Compare the same:
+
+```text
+route + state + viewport
+```
+
+Ensure fonts and images are loaded before evaluating the result.
+
+When useful, compare using side-by-side views or overlays to identify differences.
+
+Track important mismatches by:
+
+```text
+Element → Difference → Likely cause → Fix
+```
+
+## Responsive accuracy
+
+Do not use arbitrary offsets that make one viewport accurate while breaking another.
+
+After changing shared layout, typography, or spacing, recheck affected responsive views.
+
+Preserve the reference's layout behavior rather than reproducing only one screenshot size.
+
+## Avoid
+
+Do not:
+
+* approximate obvious dimensions without checking the reference
+* replace intentional spacing with template defaults
+* distort images
+* force line breaks to hide typography problems
+* stack arbitrary margin or position patches
+* optimize one viewport while breaking others
+* claim pixel-difference testing unless it was actually performed
+
+## Completion
+
+Before finishing, verify:
+
+* overall composition matches
+* major sections align
+* typography is visually consistent
+* spacing and alignment match
+* images are correctly sized and positioned
+* colors and backgrounds match
+* responsive views remain correct
+
+Report any remaining visible mismatch that could not be reproduced accurately.

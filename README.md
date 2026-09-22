@@ -91,6 +91,3 @@ The root layout uses generic Metadata API defaults. Set `NEXT_PUBLIC_SITE_URL` t
 
 Use `next/image` for local artwork where appropriate and preserve proportions. Use `next/link` for internal navigation. Keep substantial pages split into meaningful components without needless micro-components. Do not use fake images, random remote sources, or fallback hacks when an essential asset is missing—preserve layout and report the missing file instead.
 
-## Ponytail
-
-The template includes the official MIT-licensed `ponytail` skill from [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail), copied from its `skills/ponytail/SKILL.md`. It helps avoid needless code and dependencies; it is optional and does not replace design analysis or visual QA.

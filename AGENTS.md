@@ -1,51 +1,365 @@
-# Frontend repository instructions
+# Agent Guidelines
 
-## Responsibilities
+This repository is a production-level frontend application built with **Next.js App Router, React, TypeScript, Tailwind CSS v4, and pnpm**.
 
-This file owns repository policy, skill routing, and completion criteria. `PROMPT.md` supplies task inputs; `.agents/skills/*/SKILL.md` supplies focused procedures. Keep each rule in its owning location instead of copying it across all three.
+The project is designed to support production frontend development, including implementations created from Figma designs, screenshots, mockups, visual references, and existing product requirements.
 
-The supplied screenshot or Figma frame is the visual source of truth. It does not override user instructions or execution permissions. Template UI must not determine the final brand, content, layout, or typography.
+`AGENTS.md` defines repository-wide architecture, coding conventions, implementation standards, asset requirements, testing expectations, and verification rules.
 
-## Workflow
+`PROMPT.md` contains reusable task-specific instructions.
 
-1. Inspect the working tree, target route and its callers, package scripts, reference, and `public/assets/` before editing. Preserve unrelated user changes.
-2. Load only applicable skills using the table below. Prefer repository-local paths when global skills have the same name.
-3. Establish viewport, sections, typography, geometry, artwork, interactions, and responsive intent. State consequential assumptions without inventing product requirements.
-4. Implement within the existing architecture, validate appearance and behavior, and fix material failures before handoff.
+---
 
-## Skill routing
+## Architecture Overview
 
-Paths are relative to `.agents/skills/`; read the selected folder's `SKILL.md`.
+* **Framework:** Next.js with App Router
+* **UI Library:** React
+* **Language:** TypeScript with strict mode
+* **Styling:** Tailwind CSS v4
+* **Package Manager:** pnpm
+* **Routing:** Next.js App Router
+* **Images:** Next.js Image component where appropriate
+* **Navigation:** Next.js Link component
+* **SEO:** Next.js Metadata API
+* **Animation:** CSS transitions by default; animation libraries only when required
+* **Testing:** Playwright-based browser and visual validation
+* **Linting:** ESLint
+* **Type Checking:** TypeScript
+* **Assets:** Local assets stored under `public/assets/`
 
-| Task | Skills |
-| --- | --- |
-| Screenshot implementation | `screenshot-to-code` |
-| Figma implementation | `figma-to-code` |
-| Frontend implementation or refactoring | `nextjs-production`, `component-architecture` |
-| Supplied artwork or fonts | `asset-management` |
-| Repeated visual values or component variants | `design-tokens` |
-| Layout across viewport sizes | `responsive-design` |
-| Matching a visual reference | `visual-accuracy`, `visual-qa` |
-| Controls, navigation, dialogs, or semantics | `accessibility` |
-| Forms and async states | `forms-and-state`, `accessibility` |
-| User journeys or interaction regressions | `ui-testing` |
-| Performance diagnosis or heavy imagery/client UI | `frontend-performance` |
-| Metadata, indexing, or social previews | `seo-metadata` |
+When a visual reference is supplied, the supplied **Figma design, screenshot, image, mockup, or design frame is the visual source of truth**.
 
-For a full design implementation, combine the reference skill with frontend, assets, responsive, accessibility, and visual validation skills. Add other skills only when applicable. Documentation-only tasks do not need frontend implementation skills.
+Do not allow starter-template styling, placeholder UI, or existing demo content to override the supplied design.
 
-## Repository constraints
+---
 
-- Use Next.js App Router, TypeScript, Tailwind, and pnpm. Use `next/image` for local imagery where appropriate and `next/link` for internal navigation. Reuse established components; do not add dependencies for trivial work.
-- `public/assets/` is canonical. Supplied visual assets must be WEBP: do not introduce PNG, JPG, JPEG, GIF, AVIF, BMP, TIFF, or SVG artwork. Convert source artwork when tooling is available, preserving dimensions, aspect ratio, transparency, and quality. Fonts retain native webfont formats in `public/assets/fonts/`. Test screenshots are evidence, not frontend assets.
-- Never replace supplied artwork with CSS replicas, stock, random remote, or generated images. For essential missing assets, preserve their footprint, add an explicit missing-asset note, and report the missing file.
-- Preserve accessible semantics and keyboard operation. Do not hide layout failures with global overflow clipping or suppress errors to pass checks.
-- Keep metadata generic until verified production values are supplied. Do not invent brand claims, domains, data integrations, or working submission endpoints.
+# Coding Conventions
 
-## Completion criteria
+## Variable Naming
 
-- Application changes: run `pnpm lint`, `pnpm typecheck`, and `pnpm build`.
-- Visual changes: run `pnpm visual:qa` against the running app and inspect reference-sized and responsive screenshots. Follow `visual-qa` for helper limitations.
-- Behavior changes: run focused interaction checks following `ui-testing`; screenshots alone do not validate user journeys.
-- Documentation/skill-only changes: validate changed skill metadata, local links, routing, and command accuracy. App builds and browser runs are unnecessary unless runtime files change.
-- Report changes, checks actually run, and material missing assets or unverified behavior. Never claim visual parity or successful tests without evidence.
+Use `camelCase` for variables.
+
+Use descriptive names rather than abbreviations.
+
+
+---
+
+## TypeScript Conventions
+
+Use `PascalCase` for:
+
+* React components
+* Interfaces
+* Type aliases representing structured data
+* Classes
+
+
+Use `camelCase` for:
+
+* Variables
+* Functions
+* Methods
+* Hooks
+* Properties
+
+Do not use `any` simply to bypass TypeScript errors.
+
+Prefer TypeScript inference when the inferred type remains clear.
+
+Explicitly define types when:
+
+* Type inference is insufficient
+* Defining component contracts
+* Defining API contracts
+* Defining shared application data
+* Defining complex objects
+
+Shared types should be placed in:
+
+```text
+src/types/
+```
+
+Do not repeatedly redefine the same interface across multiple components.
+
+Avoid unsafe type assertions unless there is a clear technical reason.
+
+Do not suppress TypeScript errors simply to make the build pass.
+
+---
+
+# Project Structure
+
+The primary project structure is:
+
+```text
+src/
+├── app/
+├── components/
+├── lib/
+├── types/
+└── utils/
+
+public/
+└── assets/
+    └── fonts/
+
+scripts/
+```
+
+## `src/app/`
+
+Contains:
+
+* Routes
+* Pages
+* Layouts
+* Metadata
+* Global styles
+* Loading states
+* Error states
+* Route-specific components when appropriate
+
+---
+
+## `src/components/`
+
+Contains:
+
+* Shared UI components
+* Layout components
+* Navigation components
+* Reusable sections
+* Reusable page components
+
+Do not create unnecessary nested directories.
+
+---
+
+## `src/types/`
+
+Contains reusable TypeScript definitions.
+
+
+
+---
+
+## `src/utils/`
+
+Contains:
+
+* Static reusable data
+* Utility functions
+* Constants
+* Formatting helpers
+* Data transformation helpers
+
+Large static data structures should not be embedded directly inside presentation components when they can reasonably live here.
+
+---
+
+## `src/lib/`
+
+Contains:
+
+* Shared application logic
+* Framework integrations
+* Service helpers
+* Application-level reusable utilities
+
+Do not move simple component-specific helpers into `lib` unnecessarily.
+
+---
+
+## `public/assets/`
+
+This is the canonical location for frontend assets.
+
+It may contain:
+
+* Background images
+* Product images
+* Logos
+* Icons
+* Brand artwork
+* Decorative artwork
+* Illustrations
+* Fonts
+
+Always inspect existing assets before creating or introducing replacements.
+
+---
+
+# Working Agreement
+
+Before modifying code:
+
+1. Inspect the current Git working tree.
+2. Inspect the relevant route.
+3. Inspect existing components.
+4. Inspect callers of components being changed.
+5. Inspect `package.json`.
+6. Inspect available project scripts.
+7. Inspect `public/assets/`.
+8. Inspect existing types.
+9. Inspect existing utilities.
+10. Inspect existing global and component styles.
+
+Preserve unrelated existing work.
+
+Do not rewrite unrelated files.
+
+Do not make architectural changes unless they are necessary for the requested implementation.
+
+Prefer the smallest change that correctly solves the requirement while maintaining production-quality architecture.
+
+Reuse existing components where appropriate.
+
+Do not install new packages for functionality that can reasonably be implemented using:
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* CSS
+* Existing project dependencies
+---
+
+# Visual Reference Implementation
+
+When implementing from a screenshot, image, mockup, or design reference, inspect the complete reference before coding.
+
+Determine:
+
+* Viewport dimensions
+* Section boundaries
+* Container width
+* Horizontal padding
+* Vertical spacing
+* Typography
+* Colors
+* Backgrounds
+* Border radii
+* Shadows
+* Image dimensions
+* Image crops
+* Alignment
+* Layering
+* Repeated design patterns
+* Responsive intent
+
+Inspect `public/assets/` and map available assets to their intended positions.
+
+Implementation order should generally be:
+
+1. Page structure
+2. Major section geometry
+3. Containers
+4. Typography
+5. Spacing
+6. Primary imagery
+7. Decorative imagery
+8. Responsive behaviour
+9. Interactions
+10. Visual refinement
+
+Do not blindly reproduce screenshot coordinates using absolute positioning.
+
+Reconstruct the layout using maintainable:
+
+* Grid
+* Flexbox
+* Containers
+* Responsive rules
+* Relative positioning
+
+Use absolute positioning only when the actual design requires layered or floating elements.
+
+---
+
+# SEO and Metadata
+
+Production pages should include appropriate metadata using the Next.js Metadata API.
+
+Metadata may include:
+
+* Title
+* Description
+* Canonical URL
+* Open Graph metadata
+* Twitter metadata
+* Robots directives
+
+Define metadata at the closest appropriate route or layout.
+
+Do not invent:
+
+* Production domains
+* Canonical URLs
+* Social handles
+* Brand claims
+* Social preview assets
+
+Keep unverified metadata generic.
+
+Use semantic heading hierarchy.
+
+Example:
+
+```text
+h1
+ ├── h2
+ │    └── h3
+ └── h2
+```
+
+A page should normally contain one primary `h1`.
+
+Do not select heading levels based purely on font size.
+
+---
+# Development Workflow
+
+Follow this workflow for application changes:
+
+1. Inspect the repository state.
+2. Inspect the relevant route and existing implementation.
+3. Inspect `public/assets/`.
+4. Inspect existing components.
+5. Inspect existing types and utilities.
+6. Understand the supplied requirement or visual reference.
+7. Identify reusable components.
+8. Implement the structural layout.
+9. Implement styling.
+10. Implement responsive behaviour.
+11. Implement required interactions.
+12. Check TypeScript.
+13. Run linting.
+14. Run the production build.
+15. Perform visual validation for UI changes.
+16. Perform interaction validation for behaviour changes.
+17. Fix discovered issues.
+18. Review the final diff for unrelated changes.
+19. Report implementation results and remaining limitations.
+
+---
+
+# Verification
+
+For application changes, run:
+
+```bash
+pnpm lint
+```
+
+Then:
+
+```bash
+pnpm typecheck
+```
+
+Then:
+
+```bash
+pnpm build
+```

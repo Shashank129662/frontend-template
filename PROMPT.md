@@ -1,42 +1,62 @@
-# Frontend task prompts
+# Frontend task briefs
 
-Replace the bracketed inputs in one prompt below. [AGENTS.md](AGENTS.md) owns repository policy and skill routing; prompts supply task-specific scope only. Omit inputs that do not apply.
+Copy the closest template and replace bracketed fields. `AGENTS.md` governs implementation practices and skill selection; this file defines the scope of one request. Omit fields that do not apply.
 
-## Implement a reference
+## Build from a visual reference
 
 ```text
-Follow AGENTS.md. Implement [screenshot attachment or Figma URL and frame ID] at [route].
-Reference viewport: [width × height]. Other supplied breakpoints: [references].
-Assets and fonts: [paths within public/assets].
-Interactions and destinations: [behavior and URLs].
-Content or data source: [provided copy/API/static data].
-Acceptance criteria: [specific visual and behavioral outcomes].
+Follow AGENTS.md. Build [route or component] from [screenshot attachment, image, or Figma URL/frame].
+
+Reference viewport: [width × height]. Responsive references: [additional sizes or expected reflow].
+Provided assets and fonts: [paths in public/assets, or “none supplied”].
+Required content: [copy, data, labels, and states].
+Required interactions: [controls, destinations, keyboard behaviour, and animations].
+Out of scope: [areas that must not change].
+Acceptance criteria: [visible and behavioural outcomes].
 ```
 
-## Correct an existing UI
+## Improve an existing screen
 
 ```text
-Follow AGENTS.md. Compare [route] with [reference] and fix [observed mismatches].
-Reproduction: [viewport, state, and steps].
-Preserve: [working behavior or areas outside scope].
-Acceptance criteria: [expected appearance and behavior].
+Follow AGENTS.md. Update [route or component] to address [goal or observed mismatches].
+
+Reference and reproduction: [URL/image, viewport, UI state, and steps].
+Preserve: [existing behaviour, assets, public props, or adjacent routes].
+Responsive expectations: [mobile/tablet/desktop behaviour].
+Acceptance criteria: [what must look or work differently].
 ```
 
-## Reuse components
+## Add or refine an interaction
 
 ```text
-Follow AGENTS.md. Refactor [components/routes] to share [repeated UI or behavior].
-Existing variants and callers: [examples].
-Preserve appearance, semantics, public props, and interactions unless specified.
-Acceptance criteria: [which consumers should use the shared implementation].
+Follow AGENTS.md. Implement [interaction] in [route or component].
+
+Trigger and outcome: [user action and visible result].
+States: [default, loading, empty, error, success, disabled].
+Accessibility requirements: [keyboard sequence, focus handling, announcements].
+Motion requirements: [none, CSS feedback, or named animation behaviour].
+Acceptance criteria: [observable checks].
 ```
 
-## Test the UI
+## Refactor shared UI
 
 ```text
-Follow AGENTS.md. Validate [routes] against [reference, if available].
-Critical user journeys: [steps and expected outcomes].
-States: [empty/loading/error/success and relevant roles].
-Viewports/browsers: [required coverage].
-Add regression tests for [behavior], fix failures within [scope], and report evidence and remaining gaps.
+Follow AGENTS.md. Refactor [routes/components] so they share [UI or behaviour].
+
+Current callers and variants: [paths and differences].
+Public API to preserve: [props, URLs, events, and semantics].
+Visual constraints: [what must stay identical or change].
+Acceptance criteria: [target consumers and verification].
+```
+
+## Validate a frontend change
+
+```text
+Follow AGENTS.md. Validate [routes/components] after [change].
+
+Critical journeys: [steps and expected outcomes].
+Visual reference: [image/Figma/none].
+Required viewports and browsers: [coverage].
+Important states: [loading, empty, error, success, menu/dialog].
+Fix failures within [scope] and report the evidence plus any remaining gaps.
 ```
