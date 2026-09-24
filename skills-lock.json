@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "skills": {
+    "brandkit": {
+      "source": "./.agents/skills/brandkit",
+      "sourceType": "local",
+      "computedHash": "b63012f3c3d21197e0185d3e9cc7ec40c589fb10e0b5a32a561739de31aa3f20"
+    },
+    "design-taste-frontend": {
+      "source": "./.agents/skills/taste-skill",
+      "sourceType": "local",
+      "computedHash": "6d838b246d0e35d0b53f4f23f98ba7a1dd561937e64f7d0c7553b0928e376c3e"
+    },
+    "figma-design-to-code": {
+      "source": "./.agents/skills/figma-design-to-code",
+      "sourceType": "local",
+      "computedHash": "6676accbe84e37deee2910458c5fa5908e1809d0adc3d3e19a74ba40da4c3efa"
+    },
+    "frontend-design": {
+      "source": "./.agents/skills/frontend-design",
+      "sourceType": "local",
+      "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
+    },
+    "image-to-code": {
+      "source": "./.agents/skills/image-to-code",
+      "sourceType": "local",
+      "computedHash": "d796c217f5df15ffb2cd339b73e33bd499929ed1085fd2dbf02ebd28088a895b"
+    },
+    "nextjs": {
+      "source": "./.agents/skills/nextjs",
+      "sourceType": "local",
+      "computedHash": "cbf432f3bb9d801d5ccddb6b5058a937aece68f0cc577f5cdad65be66b22df73"
+    },
+    "nextjs-framer-motion-animations": {
+      "source": "./.agents/skills/nextjs-framer-motion-animations",
+      "sourceType": "local",
+      "computedHash": "d453ef6191e6dff491fdc9017352a20ad691e08087fc8ea0a6af125757694ba3"
+    },
+    "ponytail": {
+      "source": "./.agents/skills/ponytail",
+      "sourceType": "local",
+      "computedHash": "210fa0831f649ce9f8a305f7b7c8cf2a0dd09ac4dd53067109941b96e7811d4e"
+    },
+    "responsive-design": {
+      "source": "./.agents/skills/responsive-design",
+      "sourceType": "local",
+      "computedHash": "794cc7f1b2f79d398135d19ef3fe32c406dde926b9bdf86ee3fe7b939a0be906"
+    },
+    "tailwind": {
+      "source": "./.agents/skills/tailwind",
+      "sourceType": "local",
+      "computedHash": "ad40283c3138edf1a48db9f65b1b6a09aae35c6ca911ab35d6a5ea5beb66a04d"
+    },
+    "typescript": {
+      "source": "./.agents/skills/typescript",
+      "sourceType": "local",
+      "computedHash": "5ae7181a9569d9be1bc4e3f28035a5850866d331cd28608ac948d07e7db4134c"
+    },
+    "ui-design": {
+      "source": "./.agents/skills/ui-design",
+      "sourceType": "local",
+      "computedHash": "186f68e49fd4ab27a8e09b02c468edb6fe595b48bebcd7d8c1f431b24428055b"
+    },
+    "ui-testing": {
+      "source": "./.agents/skills/ui-testing",
+      "sourceType": "local",
+      "computedHash": "86bc668afb1c338ef8b767974ad33ed8d788f4869435bed8d22669a43ff0fdb6"
+    },
+    "vercel-react-best-practices": {
+      "source": "./.agents/skills/react-best-practices",
+      "sourceType": "local",
+      "computedHash": "3219a1944e404ffc14d1d9d6aef6dd2e3855b81387ee0a044ccbfe14d34c2357"
+    },
+    "visual-accuracy": {
+      "source": "./.agents/skills/visual-accuracy",
+      "sourceType": "local",
+      "computedHash": "c93a488f6ae63df3fcf6a97b834a3445896c32ab97c78643f9e2a802631802f0"
+    },
+    "visual-qa": {
+      "source": "./.agents/skills/visual-qa",
+      "sourceType": "local",
+      "computedHash": "76fd6c1f560fabd2fdacc6b4e9a44004f6325579e520361902601412c5ce6936"
+    },
+    "web-design-guidelines": {
+      "source": "./.agents/skills/web-design-guidelines",
+      "sourceType": "local",
+      "computedHash": "6108abc42d011d0e470c70b517966d39c5c23b9f582426f01d73c7b5fb1f7b8f"
+    }
+  }
+}
