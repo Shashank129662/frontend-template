@@ -1,31 +1,13 @@
-# Agent Guidelines
-
-This repository is a production-level frontend application built with **Next.js App Router, React, TypeScript, Tailwind CSS v4, and pnpm**.
-
-The project is designed to support production frontend development, including implementations created from Figma designs, screenshots, mockups, visual references, and existing product requirements.
-
-`AGENTS.md` defines repository-wide architecture, coding conventions, implementation standards, asset requirements, testing expectations, and verification rules.
-
-`PROMPT.md` contains reusable task-specific instructions.
-
----
-
 ## Architecture Overview
 
-* **Framework:** Next.js with App Router
-* **UI Library:** React
 * **Language:** TypeScript with strict mode
 * **Styling:** Tailwind CSS v4
 * **Package Manager:** pnpm
-* **Routing:** Next.js App Router
-* **Images:** Next.js Image component where appropriate
-* **Navigation:** Next.js Link component
 * **SEO:** Next.js Metadata API
 * **Animation:** CSS transitions by default; animation libraries only when required
 * **Testing:** Playwright-based browser and visual validation
 * **Linting:** ESLint
 * **Type Checking:** TypeScript
-* **Assets:** Local assets stored under `public/assets/`
 
 When a visual reference is supplied, the supplied **Figma design, screenshot, image, mockup, or design frame is the visual source of truth**.
 
@@ -40,7 +22,6 @@ Do not allow starter-template styling, placeholder UI, or existing demo content 
 Use `camelCase` for variables.
 
 Use descriptive names rather than abbreviations.
-
 
 ---
 
@@ -194,16 +175,15 @@ Always inspect existing assets before creating or introducing replacements.
 
 Before modifying code:
 
-1. Inspect the current Git working tree.
-2. Inspect the relevant route.
-3. Inspect existing components.
-4. Inspect callers of components being changed.
-5. Inspect `package.json`.
-6. Inspect available project scripts.
-7. Inspect `public/assets/`.
-8. Inspect existing types.
-9. Inspect existing utilities.
-10. Inspect existing global and component styles.
+
+1. Inspect existing components.
+2. Inspect callers of components being changed.
+3. Inspect `package.json`.
+4. Inspect available project scripts.
+5. Inspect `public/assets/`.
+6. Inspect existing types.
+7. Inspect existing utilities.
+8. Inspect existing global and component styles.
 
 Preserve unrelated existing work.
 
@@ -317,32 +297,6 @@ A page should normally contain one primary `h1`.
 
 Do not select heading levels based purely on font size.
 
----
-# Development Workflow
-
-Follow this workflow for application changes:
-
-1. Inspect the repository state.
-2. Inspect the relevant route and existing implementation.
-3. Inspect `public/assets/`.
-4. Inspect existing components.
-5. Inspect existing types and utilities.
-6. Understand the supplied requirement or visual reference.
-7. Identify reusable components.
-8. Implement the structural layout.
-9. Implement styling.
-10. Implement responsive behaviour.
-11. Implement required interactions.
-12. Check TypeScript.
-13. Run linting.
-14. Run the production build.
-15. Perform visual validation for UI changes.
-16. Perform interaction validation for behaviour changes.
-17. Fix discovered issues.
-18. Review the final diff for unrelated changes.
-19. Report implementation results and remaining limitations.
-
----
 
 # Verification
 
